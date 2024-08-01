@@ -1,0 +1,58 @@
+/* #head
+{
+    border: 1px solid black;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+button
+{
+    padding:10px;
+    background-color: red;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+.leftcontainer
+{
+    border: 1px solid black;
+    padding-left: 80px;
+    padding-top: 15px;
+    width: 550px;
+    box-shadow: 50%;
+}
+.rightcontainer{
+ border: 1px solid black;
+    position: absolute; 
+     left: 55%;
+    top: 12%; 
+    width: 500px;
+} 
+#headleft
+{
+    display: flex;
+    justify-content: center;
+}
+#data
+{
+    padding-left: 20%;
+
+}
+label
+{
+    color: red;
+}
+h2,h3{
+      color: rgb(191, 195, 96);
+} */
+th
+{
+    background-color: gray;
+   
+}
+a
+{
+    color: white;
+    text-decoration: none;
+}

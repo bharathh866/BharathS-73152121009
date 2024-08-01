@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "MyAnguarProject1": {
+    "hotelmanagement": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,12 +23,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/my-anguar-project1",
+            "outputPath": "dist/hotelmanagement",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js",
-              "@angular/localize/init"
+              "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -38,7 +37,6 @@
               }
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -76,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "MyAnguarProject1:build:production"
+              "buildTarget": "hotelmanagement:build:production"
             },
             "development": {
-              "buildTarget": "MyAnguarProject1:build:development"
+              "buildTarget": "hotelmanagement:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,8 +90,7 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing",
-              "@angular/localize/init"
+              "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
@@ -112,6 +109,6 @@
     }
   },
   "cli": {
-    "analytics": "0ff54277-9681-484c-b5bb-50bbc9e148f6"
+    "analytics": "192d88ec-ecee-4bf2-b044-544afd575325"
   }
 }

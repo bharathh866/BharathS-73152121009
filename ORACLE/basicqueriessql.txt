@@ -1,0 +1,18 @@
+ create table tbl_employee (eid number(5),ename varchar2(20),esalary number(5));
+ desc tbl_employee;
+ insert into tbl_employee values(101,'Bharath',8000);
+ insert into tbl_employee values(102,'Kavin',2000);
+ insert into tbl_employee values(103,'Azeesh',3000);
+ insert into tbl_employee values(104,'Ravi',7000);
+ insert into tbl_employee values(105,'Krishna',9000);
+ select * from tbl_employee;
+ select distinct eid from tbl_employee;
+ select * from tbl_employee where eid1=101;
+ select * from tbl_employee where eid1 !=101;
+ select * from tbl_employee where esalary >=7000;
+ update tbl_employee set esalary=31000 where eid=105;
+ select * from tbl_employee;
+ update tbl_employee set ename='rakesh',esalary=200 where eid=104;
+ select * from tbl_employee;
+delete from tbl_employee where eid=101;
+select * from tbl_employee;

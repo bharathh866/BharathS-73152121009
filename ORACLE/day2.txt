@@ -1,0 +1,195 @@
+SQL> create table tbl_employee(eid number(5),ename varchar2(20),esalary number(5));
+
+Table created.
+
+SQL> insert into tbl_employee values(101,'Bharath',8800);
+
+1 row created.
+
+SQL> insert into tbl_employee values(102,'Kavin',10000);
+
+1 row created.
+
+SQL> insert into tbl_employee values(103,'Azeesh',9000);
+
+
+1 row created.
+
+SQL> insert into tbl_employee values(104,'Krishna',7000)
+;
+
+1 row created.
+
+SQL> insert into tbl_employee values(105,'Rutu',3000);
+
+1 row created.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       101 Bharath                    8800
+       102 Kavin                     10000
+       103 Azeesh                     9000
+       104 Krishna                    7000
+       105 Rutu                       3000
+
+SQL> select * from tbl_employee where eid in(101,103,106);
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       101 Bharath                    8800
+       103 Azeesh                     9000
+
+SQL> select * from tbl_employee where eid not in(
+101,103,106);
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       102 Kavin                     10000
+       104 Krishna                    7000
+       105 Rutu                       3000
+
+SQL> select * from tbl_employee where esalary between 3000 and 8000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       104 Krishna                    7000
+       105 Rutu                       3000
+
+SQL> select * from tbl_employee where esalary not between 3000 and 8000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       101 Bharath                    8800
+       102 Kavin                     10000
+       103 Azeesh                     9000
+
+
+SQL> SELECT MAX(esalary) from tbl_employee;
+
+MAX(ESALARY)
+------------
+       10000
+
+SQL> select * from tbl_employee where esalary in(101,103,105)and esalary>5000;
+
+no rows selected
+
+SQL> select * from tbl_employee where eid in(101,103
+,105)and esalary>5000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       101 Bharath                    8800
+       103 Azeesh                     9000
+
+SQL> select * from tbl_employee where eid in(101,103,105)or esalary>5000;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       101 Bharath                    8800
+       102 Kavin                     10000
+       103 Azeesh                     9000
+       104 Krishna                    7000
+       105 Rutu                       3000
+
+
+SQL> select * from tbl_employee where ename is null;
+
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       106                            4000
+
+SQL> select * from tbl_employee where ename is not n
+ull;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       101 Bharath                    8800
+       102 Kavin                     10000
+       103 Azeesh                     9000
+       104 Krishna                    7000
+       105 Rutu                       3000
+
+
+SQL> select * from tbl_employee order by esalary DES
+C;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       102 Kavin                     10000
+       103 Azeesh                     9000
+       101 Bharath                    8800
+       104 Krishna                    7000
+       106                            4000
+       105 Rutu                       3000
+
+6 rows selected.
+
+SQL> select * from tbl_employee order by esalary ASC;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       105 Rutu                       3000
+       106                            4000
+       104 Krishna                    7000
+       101 Bharath                    8800
+       103 Azeesh                     9000
+       102 Kavin                     10000
+
+6 rows selected.
+
+
+SQL> select * from tbl_employee where ename like 'A%';
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       103 Azeesh                     9000
+
+SQL> select * from tbl_employee order by ename ASC;
+
+       EID ENAME                   ESALARY
+---------- -------------------- ----------
+       103 Azeesh                     9000
+       101 Bharath                    8800
+       102 Kavin                     10000
+       104 Krishna                    7000
+       105 Rutu                       3000
+       106                            4000
+
+ alter table tbl_employee add Doj date;
+
+Table altered.
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(5)
+ ENAME                                              VARCHAR2(20)
+ ESALARY                                            NUMBER(5)
+ DOJ                                                DATE
+
+SQL> alter table tbl_employee modify esalary number(7);
+
+Table altered.
+
+SQL> desc tbl_employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(5)
+ ENAME                                              VARCHAR2(20)
+ ESALARY                                            NUMBER(7)
+
+SQL> ALTER TABLE tbl_employee RENAME COLUMN ename TO efirstname;
+
+Table altered.
+
+SQL> select * from tbl_employee;
+
+       EID EFIRSTNAME              ESALARY
+---------- -------------------- ----------
+       101 Bharath                    8800
+       102 Kavin                     10000
+       103 Azeesh                     9000
+       104 Krishna                    7000
+       105 Rutu                       3000

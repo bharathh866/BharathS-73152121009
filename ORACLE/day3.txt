@@ -1,0 +1,127 @@
+
+SQL> select dno,count(*) from tbl_employee group by dno;
+     select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from tbl_employee group by dno order by dno;      DNO
+SOUNT(*)
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        10          1         8800         8800         8800         8800
+        20          1         6800         6800         6800         6800
+        30          2         9000         4500         4000         5000
+        40          1         2000         2000         2000         2000
+SQL> select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from tbl_employee group by dno;
+SQL>
+SQL>     O   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+SQL> ----- ---------- ------------ ------------ ------------ ------------
+SQL>    30          2         9000         4500         4000         5000
+SQL>    20          1         6800         6800         6800         6800
+SQL>    40          1         2000         2000         2000         2000
+SQL>    10          1         8800         8800         8800         8800
+SQL>
+SQL> select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from tbl_employee group by dno order by dno;
+SQL>
+SQL>   DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+SQL> ----- ---------- ------------ ------------ ------------ ------------
+SQL>    10          1         8800         8800         8800         8800
+SQL>    20          1         6800         6800         6800         6800
+SQL>    30          2         9000         4500         4000         5000
+SQL>    40          1         2000         2000         2000         2000
+SQL>
+SQL> select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from tbl_employee group by dno order by dno;
+SQL>    40          1         2000         2000         2000         2000                                               ;       40          1         2000         2000         2000         2000                                               ;    select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from tbl_employee group by dno having minsalary by dno;o having minsalary by dno;
+     select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from tbl_employee group by dno having min(esalary)>3000 order by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        10          1         8800         8800         8800         8800
+        20          1         6800         6800         6800         6800
+        30          2         9000         4500         4000         5000
+
+SQL> select dno,count(*),sum(esalary),avg(esalary),min(esalary),max(esalary) from tbl_employee group by dno having min(esalary)>3000 order by dno;
+
+       DNO   COUNT(*) SUM(ESALARY) AVG(ESALARY) MIN(ESALARY) MAX(ESALARY)
+---------- ---------- ------------ ------------ ------------ ------------
+        10          1         8800         8800         8800         8800
+        20          1         6800         6800         6800         6800
+        30          2         9000         4500         4000         5000
+
+SQL> create table tbl_student (reg_no number(5) primary key,
+  2  stud_name varchar2(20) not null,
+  3  stud_email varchar2(20) unique,
+  4  stud_age number(5) check (stud_age>0),
+  5  stud_location varchar2(20) default 'Erode');
+
+Table created.
+
+
+SQL> insert into tbl_student values(101,'bharath','bh@gmail.com',-18,'salem');
+insert into tbl_student values(101,'bharath','bh@gmail.com',-18,'salem')
+*
+ERROR at line 1:
+ORA-02290: check constraint (SYSTEM.SYS_C006998) violated
+
+
+SQL> select * from tbl_student;
+
+    REG_NO STUD_NAME            STUD_EMAIL             STUD_AGE
+---------- -------------------- -------------------- ----------
+STUD_LOCATION
+--------------------
+       101 bharath              bh@gmail.com                 18
+salem
+
+> select * from tbl_student;
+
+    REG_NO STUD_NAME            STUD_EMAIL             STUD_AGE STUD_LOCATION
+---------- -------------------- -------------------- ---------- --------------------
+       101 bharath              bh@gmail.com                 18 salem
+
+SQL> insert into tbl_student values(102,'Kavin','kavin@gmail.com',20,'cbe');
+
+1 row created.
+
+SQL> create view myview as select * from tbl_employee where dno=10;
+
+View created.
+
+SQL> select * from myview;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Bharath                    8800         10
+
+SQL> update myview set ename='Dhoni' where eid=101;
+
+1 row updated.
+
+SQL> select * from myview;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Dhoni                      8800         10
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       101 Dhoni                      8800         10
+       102 Kavin                      6800         20
+       103 Azeesh                     5000         30
+       104 Ravi                       4000         30
+       105 Teddy                      2000         40
+       106 Rutu                       7000         60
+
+6 rows selected.
+
+SQL> delete  from myview where eid=101;
+
+1 row deleted.
+
+SQL> select * from tbl_employee;
+
+       EID ENAME                   ESALARY        DNO
+---------- -------------------- ---------- ----------
+       102 Kavin                      6800         20
+       103 Azeesh                     5000         30
+       104 Ravi                       4000         30
+       105 Teddy                      2000         40
+       106 Rutu                       7000         60
